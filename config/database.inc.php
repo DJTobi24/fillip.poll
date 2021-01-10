@@ -11,5 +11,5 @@ if (!$link) {
 echo "Erfolg: es wurde ordnungsgemäß mit MySQL verbunden! Die Datenbank \"datenbank\" ist toll." . PHP_EOL;
 echo "Host-Informationen: " . mysqli_get_host_info($link) . PHP_EOL;
 
-mysqli_close($link);
+
 ?>
