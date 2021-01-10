@@ -1,6 +1,6 @@
 <?php
 include("config/database.inc.php");
-$sql1 = "SELECT * FROM `poll` ORDER BY datum";
+$sql1 = "SELECT * FROM `poll` WHERE "id"";
 
 $umfragen = mysqli_query( $conn, $sql1 );
 if ( ! $db_erg )
