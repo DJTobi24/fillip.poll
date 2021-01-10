@@ -29,7 +29,7 @@
             if (mysqli_query($conn, $sql)) {
                echo "Umfrage Erfolgreich erstellt";
             } else {
-               echo "Error: " . $sql . "" . mysqli_error($conn);
+               echo `<script>console.log("Consolen LOG:` . $sql . mysqli_error($conn)`")</script>`;
             }
             $conn->close();
          }
