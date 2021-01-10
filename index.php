@@ -3,10 +3,10 @@
 <?php
 include("config/database.inc.php"); // <- Datenbank einbinden
 
-$sql = "SELECT * FROM `poll` ORDER BY `Datum` DESC LIMIT 0,5"; // SQL String. Limit ist 1
+$sql = "SELECT * FROM `poll` WHERE `Aktiv` = 1 LIMIT 0,1"; // SQL String. Limit ist 1
 $query = mysqli_query($conn, $sql); // Query ausführen
-while ( $row = mysqli_fetch_row($query)) // In Array packen
-{
+$row = mysqli_fetch_row($query); // In Array packen
+
 
 
 echo "<b>Frage: ".$row[1]."</b><br>";
@@ -14,9 +14,8 @@ echo "<input type='hidden' name='pollid' value='".$row[0]."' />";
 $sql = "SELECT * FROM `poll_answers` WHERE `pollid` = ".$row[0];
 $query = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_row($query))
-    {
-        echo "<input type='radio' name='answer' value='".$row[0]."' />".$row[1]."<br>";
-    }
+{
+    echo "<input type='radio' name='answer' value='".$row[0]."' />".$row[1]."<br>";
 }
 ?>
 <input type='submit' value='Abstimmen!'>
