@@ -19,11 +19,6 @@
          if(isset($_POST["submit"])){
             include("config/database.inc.php");
 
-            $sql1 = "SELECT * FROM `poll`";
-
-                $umfragen = mysqli_query( $conn, $sql1 );
-                $anzahl = mysqli_num_rows($umfragen);
-
             $sql = "INSERT INTO poll(Frage)VALUES ('".$_POST["frage"]."') . poll(id)VALUES ('.$umfragen.')"
 
             if (mysqli_query($conn, $sql)) {
