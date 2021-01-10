@@ -24,12 +24,12 @@
             $anzahl = mysqli_num_rows($umfragen);
 
 
-            $sql = "INSERT INTO poll(`ID`, `Fragen`, `Datum`, `Aktiv`)VALUES ('".$_POST["name"]."')";
+            $sql = "INSERT INTO poll(`ID`, `Fragen`, `Datum`, `Aktiv`)VALUES ('".$anzahl."', '".$_POST["name"]."')";
 
             if (mysqli_query($conn, $sql)) {
                echo "Umfrage Erfolgreich erstellt";
             } else {
-               echo '<script>console.log("Consolen LOG:' . $sql . mysqli_error($conn) . '")</script>';
+               echo '<script>console.log("Consolen LOG: ' . $sql . mysqli_error($conn) . '")</script>';
             }
             $conn->close();
          }
