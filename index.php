@@ -3,7 +3,7 @@
 <?php
 include("config/database.inc.php"); // <- Datenbank einbinden
 
-$sql = "SELECT * FROM `poll` ORDER BY `Datum` WHERE `Aktiv` = 1 LIMIT 0,1"; // SQL String. Limit ist 1
+$sql = "SELECT * FROM `poll` WHERE `Aktiv` = 1 LIMIT 0,1"; // SQL String. Limit ist 1
 $query = mysqli_query($conn, $sql); // Query ausführen
 $row = mysqli_fetch_row($query); // In Array packen
 
