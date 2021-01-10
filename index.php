@@ -9,7 +9,7 @@ $row = mysqli_fetch_row($query); // In Array packen
 
 
 
-echo "<b>".$row[1]."</b><br>";
+echo "<b>".$row[2]."</b><br>";
 echo "<input type='hidden' name='pollid' value='".$row[0]."' />";
 $sql = "SELECT * FROM `poll_answers` WHERE `pollid` = ".$row[0];
 $query = mysqli_query($conn, $sql);
@@ -20,6 +20,10 @@ while($row = mysqli_fetch_row($query))
 ?>
 <input type='submit' value='Abstimmen!'>
 </form>
+
+
+
+
 
 <?php
 $sql1 = "SELECT * FROM `poll`";
