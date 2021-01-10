@@ -1,7 +1,6 @@
 <html>
    <head>
-      <title>Add New Record in MySQLi Database</title>
-      <link rel = "stylesheet" type = "text/css" href = "style.css">
+      <title>Umfrage Erstellen</title>
    </head>
    
    <body>
@@ -11,7 +10,7 @@
             <input type = "text" name = "frage" id = "frage" />
             <br />
             <br />
-            <input type = "submit" value ="Submit" name = "Erstellen"/>
+            <input type = "submit" value ="Umfrage Erstellen" name = "submit"/>
             <br />
          </form>
       </div>
@@ -19,9 +18,6 @@
       <?php
          if(isset($_POST["submit"])){
             include("config/database.inc.php");
-
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
 
             if ($conn->connect_error) {
                die("Verbindung Fehlgeschlagen: " . $conn->connect_error);
