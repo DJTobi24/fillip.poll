@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "nutzer", "passwort", "datenbank");
+$link = mysqli_connect("127.0.0.1", "poll", "25152515?", "poll");
 
 if (!$link) {
     echo "Fehler: konnte nicht mit MySQL verbinden." . PHP_EOL;
