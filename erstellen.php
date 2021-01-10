@@ -24,7 +24,7 @@
             $anzahl = mysqli_num_rows($umfragen);
 
 
-            $sql = "INSERT INTO `poll` (`ID`, `Frage`, `Datum`, `Aktiv`)VALUES ('".$anzahl."', '".$_POST["name"]."', NOW(), '".$anzahl."')";
+            $sql = "INSERT INTO `poll` (`ID`, `Frage`, `Datum`, `Aktiv`)VALUES ('".$anzahl."', '".$_POST["frage"]."', NOW(), '".$anzahl."')";
 
             if (mysqli_query($conn, $sql)) {
                echo "Umfrage Erfolgreich erstellt";
