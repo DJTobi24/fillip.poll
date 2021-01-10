@@ -24,7 +24,7 @@
             $anzahl = mysqli_num_rows($umfragen);
 
 
-            $sql = "INSERT INTO tutorials_inf(name)VALUES ('".$_POST["name"]."')";
+            $sql = "INSERT INTO poll(`ID`, `Fragen`, `Datum`, `Aktiv`)VALUES ('".$_POST["name"]."')";
 
             if (mysqli_query($conn, $sql)) {
                echo "Umfrage Erfolgreich erstellt";
