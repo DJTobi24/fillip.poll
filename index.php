@@ -21,7 +21,7 @@ $sql = "SELECT * FROM `poll_answers` WHERE `pollid` = ".$row[0];
 $query = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_row($query))
 {
-    echo "<input type='radio' name='answer' value='".$row[0]."' />".$row[1]."<br>";
+    echo "<input type='radio' name='answer' value='Test".$row[0]."' />".$row[1]."<br>";
 }
 ?>
 <input type='submit' value='Abstimmen!'>

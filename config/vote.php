@@ -2,7 +2,7 @@
 include("database.inc.php");
 if(!isset($_REQUEST['answer'])) // Überprüfen ob Etwas angeklickt wurde
 {
-    echo "Du musst etwas anklicken! <a href='index.php'>Zurück</a>"; // Wenn nicht dann bitte zurück
+    echo "Du musst etwas anklicken! <a href='../index.php'>Zurück</a>"; // Wenn nicht dann bitte zurück
 }
 else //Ansonsten
 {
