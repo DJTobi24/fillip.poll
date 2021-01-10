@@ -3,7 +3,7 @@ include("config/database.inc.php");
 $sql1 = "SELECT * FROM `poll`";
 
 $umfragen = mysqli_query( $conn, $sql1 );
-if ( ! $db_erg )
+if ( ! $umfragen )
 {
     die('Ungültige Abfrage: ' . mysqli_error());
 }
