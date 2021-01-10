@@ -2,7 +2,7 @@
 <?php
 include("config/database.inc.php"); // Einbinden der Verbindung zur Datenbank
 $conn = OpenCon();
-echo "Connected Successfully";
+echo '<script>console.log("Datenbank Verbunden")</script>';
 $sql = "SELECT * FROM `poll` WHERE `Aktiv` = 1 LIMIT 0,1"; // SQL String. Limit ist 1
 $query = mysqli_query($conn, $sql); // Query ausführen
 $row = mysqli_fetch_row($query); // In Array packen
