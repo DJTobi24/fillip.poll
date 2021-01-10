@@ -14,4 +14,6 @@ function CloseCon($conn)
  {
  $conn -> close();
  }
-   
+ $conn = OpenCon();
+ echo '<script>console.log("Consolen LOG: Datenbank Verbunden")</script>';
+ ?>
