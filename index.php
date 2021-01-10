@@ -8,9 +8,9 @@ if ( ! $umfragen )
     die('Ungültige Abfrage: ' . mysqli_error());
 }
 $anzahl_eintraege = mysqli_num_rows($umfragen);
-echo "<p>Anzahl der Gästebuch-Einträge: $anzahl_eintraege </p>";
+echo "<p>Anzahl der Umfragene: $anzahl_eintraege </p>";
 ?>
-
+ 
 <form method="post" action="config/vote.php">
 <?php
 include("config/database.inc.php"); // <- Datenbank einbinden
@@ -31,10 +31,4 @@ while($row = mysqli_fetch_row($query))
 }
 ?>
 <input type='submit' value='Abstimmen!'>
-</form>
-<br>
-<br>
-<form method="post" action="config/create_vote.php">
-    <input type='radio' name='create' value="Test"><br>
-    <input type='submit' value='Umfrage Erstellen'>
 </form>
