@@ -19,10 +19,12 @@
          if(isset($_POST["submit"])){
             include("config/database.inc.php");
 
+            $sql1 = "SELECT * FROM `poll`";
+            $umfragen = mysqli_query( $conn, $sql1 );
+            $anzahl = mysqli_num_rows($umfragen);
+
+
             $sql = "INSERT INTO tutorials_inf(name)VALUES ('".$_POST["name"]."')";
-
-
-
 
             if (mysqli_query($conn, $sql)) {
                echo "Umfrage Erfolgreich erstellt";
