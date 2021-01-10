@@ -1,5 +1,4 @@
 
- 
 <form method="post" action="config/vote.php">
 <?php
 include("config/database.inc.php"); // <- Datenbank einbinden
@@ -21,3 +20,15 @@ while($row = mysqli_fetch_row($query))
 ?>
 <input type='submit' value='Abstimmen!'>
 </form>
+
+<?php
+$sql1 = "SELECT * FROM `poll`";
+
+$umfragen = mysqli_query( $conn, $sql1 );
+if ( ! $umfragen )
+{
+    die('Ungültige Abfrage: ' . mysqli_error());
+}
+$anzahl_eintraege = mysqli_num_rows($umfragen);
+echo "<p>Anzahl der Umfragene: $anzahl_eintraege </p>";
+?>
