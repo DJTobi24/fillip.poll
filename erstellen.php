@@ -18,13 +18,13 @@
       <?php
          if(isset($_POST["submit"])){
             include("config/database.inc.php");
-
+            $aktiv = "1";
             $sql1 = "SELECT * FROM `poll`";
             $umfragen = mysqli_query( $conn, $sql1 );
             $anzahl = mysqli_num_rows($umfragen);
 
 
-            $sql = "INSERT INTO `poll` (`ID`, `Frage`, `Datum`, `Aktiv`)VALUES ('".$anzahl."', '".$_POST["frage"]."', NOW(), '".$anzahl."')";
+            $sql = "INSERT INTO `poll` (`ID`, `Frage`, `Datum`, `Aktiv`)VALUES ('".$anzahl."', '".$_POST["frage"]."', NOW(), '".$aktiv."')";
 
             if (mysqli_query($conn, $sql)) {
                echo "Umfrage Erfolgreich erstellt";
