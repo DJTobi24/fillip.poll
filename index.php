@@ -1,15 +1,4 @@
-<?php
-include("config/database.inc.php");
-$sql1 = "SELECT * FROM `poll`";
 
-$umfragen = mysqli_query( $conn, $sql1 );
-if ( ! $umfragen )
-{
-    die('Ungültige Abfrage: ' . mysqli_error());
-}
-$anzahl_eintraege = mysqli_num_rows($umfragen);
-echo "<p>Anzahl der Umfragene: $anzahl_eintraege </p>";
-?>
  
 <form method="post" action="config/vote.php">
 <?php
