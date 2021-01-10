@@ -3,13 +3,13 @@
 <?php
 include("config/database.inc.php"); // <- Datenbank einbinden
 
-$sql = "SELECT * FROM `poll` WHERE `Aktiv` = 1 LIMIT 0,1"; // SQL String. Limit ist 1
+$sql = "SELECT * FROM `poll` WHERE `ID` = 2"; // SQL String. Limit ist 1
 $query = mysqli_query($conn, $sql); // Query ausführen
 $row = mysqli_fetch_row($query); // In Array packen
 
 
 
-echo "<b>".$row[2]."</b><br>";
+echo "<b>Frage: ".$row[1]."</b><br>";
 echo "<input type='hidden' name='pollid' value='".$row[0]."' />";
 $sql = "SELECT * FROM `poll_answers` WHERE `pollid` = ".$row[0];
 $query = mysqli_query($conn, $sql);
