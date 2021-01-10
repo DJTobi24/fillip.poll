@@ -11,7 +11,7 @@ echo "<input type='hidden' name='pollid' value='".$row[0]."' />"; //Wir speicher
 
 $sql = "SELECT * FROM `poll_answers` WHERE `pollid` = ".$row[0]; // Abfrage der Antwort wo die ID des Polls die unserer Frage ist
 $query = mysqli_query($conn, $sql); // Query ausführen
-while($row = mysql_fetch_row($query)) // So lange bis das ende erreicht ist
+while($row = mysqli_fetch_row($query)) // So lange bis das ende erreicht ist
 {
     echo "<input type='radio' name='answer' value='".$row[0]."' />".$row[1]."<br>"; // Radiobutton mit Frage ausgeben
 }
