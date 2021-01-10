@@ -1,10 +1,11 @@
 <?php
-$sql = "SELECT * FROM `poll` ORDER BY datum";
+include("config/database.inc.php");
+$sql1 = "SELECT * FROM `poll` ORDER BY datum";
 
-$umfragen = mysqli_query( $conn, $sql );
+$umfragen = mysqli_query( $conn, $sql1 );
 if ( ! $db_erg )
 {
-    die('Ungültige Abfrage: ' . mysql_error());
+    die('Ungültige Abfrage: ' . mysqli_error());
 }
 $anzahl_eintraege = mysqli_num_rows($umfragen);
 echo "<p>Anzahl der Gästebuch-Einträge: $anzahl_eintraege </p>";
@@ -30,7 +31,6 @@ while($row = mysqli_fetch_row($query))
 }
 ?>
 <input type='submit' value='Abstimmen!'>
-
 </form>
 <br>
 <br>
