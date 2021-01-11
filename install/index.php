@@ -54,80 +54,116 @@ function find_SQL_Version() {
 
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-#customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  <head>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
 
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+      li {
+        float: left;
+      }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
 
-#customers tr:hover {background-color: #ddd;}
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
 
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
+      .active {
+        background-color: #4CAF50;
+      }
 
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 
-.button {font-size: 24px;}
+      #voraussetzung {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
 
-</style>
-</head>
-<body>
-<table id="customers">
-  <tr>
-    <th>Name</th>
-    <th>Version</th>
-    <th>Status</th>
-  </tr>
-  <tr>
-<?php
-if(empty($php_error)) echo "<td>PHP</td> <td>$php_version</td> <td>OK!</td>";
-else echo "<td style='color:red;'>$php_error/td>";?>
-  </tr>
-  <tr>
-<?php
-if(empty($mail_error)) echo "<td>PHP-Mail</td> <td>$php_version</td> <td>OK!</td>";
-else echo "<span style='color:red;'>$mail_error</span><br>";
-?>
-  </tr>
-  <tr>
-<?php
-if(empty($safe_mode_error)) echo "<td>SafeMode</td> <td>$php_version</td> <td>OK!</td>";
-else echo "<span style='color:red;'>$php_error</span><br>";
-?>
-  </tr>
-  <tr>
-<?php
-if(empty($mysql_error)) echo "<td>MySQL</td> <td>$mysql_version</td> <td>OK!</td>";
-else echo "<span style='color:red;'>$mysql_error</span><br>";
-?>
-  </tr>
- </table>
- <form method="post" action="mysqlinsert.php">
- <input type="submit" name="install" value="Installieren" class="button button">
- </form>
-</body>
+      #voraussetzung td, #voraussetzung th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #voraussetzung tr:nth-child(even){background-color: #f2f2f2;}
+
+      #voraussetzung tr:hover {background-color: #ddd;}
+
+      #voraussetzung th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .button {font-size: 24px;
+      }
+
+    </style>
+  </head>
+  <body>
+      <!-- Header Bar -->
+    <ul>
+      <li><a class="active" >Version 1.0</a></li>
+      <li><a>Automatische Installation der Datenbank</a></li>
+    </ul>
+      <!-- Voraussetzungen -->
+    <table id="voraussetzung">
+      <tr>
+        <th>Name</th>
+        <th>Version</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <?php
+        if(empty($php_error)) echo "<td>PHP</td> <td>$php_version</td> <td>OK!</td>";
+        else echo "<td style='color:red;'>$php_error/td>";?>
+      </tr>
+      <tr>
+        <?php
+        if(empty($mail_error)) echo "<td>PHP-Mail</td> <td>$php_version</td> <td>OK!</td>";
+        else echo "<span style='color:red;'>$mail_error</span><br>";
+        ?>
+      </tr>
+      <tr>
+        <?php
+        if(empty($safe_mode_error)) echo "<td>SafeMode</td> <td>$php_version</td> <td>OK!</td>";
+        else echo "<span style='color:red;'>$php_error</span><br>";
+        ?>
+      </tr>
+      <tr>
+        <?php
+        if(empty($mysql_error)) echo "<td>MySQL</td> <td>$mysql_version</td> <td>OK!</td>";
+        else echo "<span style='color:red;'>$mysql_error</span><br>";
+        ?>
+      </tr>
+    </table>
+    <form method="post" action="mysqlinsert.php">
+    <input type="submit" name="install" value="Installieren" class="button button">
+    </form>
+  </body>
 </html>
