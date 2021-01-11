@@ -1,6 +1,6 @@
 <?php
 function pdo_connect_mysql() {
-    // Update the details below with your MySQL details
+    // Hier sind die MySql Lgoindaten abgespeichert
     $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'poll4';
     $DATABASE_PASS = '25152515?';

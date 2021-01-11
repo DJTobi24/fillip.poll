@@ -6,12 +6,12 @@ $msg = '';
 // Check if POST data is not empty
 if (!empty($_POST)) {
     // Post data not empty insert a new record
-    // Check if POST variable "title" exists, if not default the value to blank, basically the same for all variables
-    $title = isset($_POST['title']) ? $_POST['title'] : '';
+    // Check if POST variable "frage" exists, if not default the value to blank, basically the same for all variables
+    $frage = isset($_POST['frage']) ? $_POST['frage'] : '';
     $desc = isset($_POST['desc']) ? $_POST['desc'] : '';
     // Insert new record into the "polls" table
     $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?)');
-    $stmt->execute([$title, $desc]);
+    $stmt->execute([$frage, $desc]);
     // Below will get the last insert ID, this will be the poll id
     $poll_id = $pdo->lastInsertId();
     // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
@@ -28,13 +28,13 @@ if (!empty($_POST)) {
 }
 ?>
 
-<?=template_header('Create Poll')?>
+<?=template_header('Umfrage Erstellen')?>
 
 <div class="content update">
-	<h2>Create Poll</h2>
+	<h2>Umfrage Erstellen</h2>
     <form action="erstellen.php" method="post">
-        <label for="title">Frage</label>
-        <input type="text" name="title" id="title">
+        <label for="frage">Frage</label>
+        <input type="text" name="frage" id="frage">
         <label for="desc">Beschreibung</label>
         <input type="text" name="desc" id="desc">
         <label for="answers">Antworten (pro Zeile 1)</label>

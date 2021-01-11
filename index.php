@@ -8,7 +8,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-<?=template_header('Polls')?>
+<?=template_header('Unfrage Website')?>
 
 <div class="content home">
 	<h2>Umfragen</h2>
