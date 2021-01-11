@@ -5,15 +5,15 @@ define('DIR_APP', str_replace('\'', '/', realpath(dirname(__FILE__))) . '/');
 define('DIR_SMOOTH_POLL', str_replace('\'', '/', realpath(DIR_APP . '../')) . '/');
 
 if (phpversion() < '5.0') {
-			$error['warning'] = 'Warning: You need to use PHP5 or above for Smooth AJAX Poll to work!';
+			$error['warning'] = 'Deine PHP Version muss über 5 liegen!';
 		}
 	
 		if (ini_get('session.auto_start')) {
-			$error['warning'] = 'Warning: Smooth AJAX Poll will not work with session.auto_start enabled !';
+			$error['warning'] = 'Die App wird nicht mit session.auto_start = enabled funktionieren!';
 		}
 
 		if (!extension_loaded('mysql')) {
-			$error['warning'] = 'Warning: MySQL extension needs to be loaded for Smooth AJAX Poll to work!';
+			$error['warning'] = ' MySQL extension muss aktiv sein!';
 		}
 		
 		if (!is_writable(DIR_SMOOTH_POLL . 'includes/pollDbAccess.php')) {
