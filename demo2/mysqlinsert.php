@@ -1,28 +1,22 @@
 <?php
 include("database.inc.php");
-$filename = '1-database.sql';
 
-// Temporary variable, used to store current query
-$templine = '';
-// Read in entire file
-$lines = file($filename);
-// Loop through each line
-foreach ($lines as $line)
-{
-// Skip it if it's a comment
-if (substr($line, 0, 2) == '--' || $line == '')
-    continue;
-
-// Add this line to the current segment
-$templine .= $line;
-// If it has a semicolon at the end, it's the end of the query
-if (substr(trim($line), -1, 1) == ';')
-{
-    // Perform the query
-    mysqli_query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysqli_error() . '<br /><br />');
-    // Reset temp variable to empty
-    $templine = '';
+$query = '';
+$sqlScript = file('1-database.sql');
+foreach ($sqlScript as $line)	{
+	
+	$startWith = substr(trim($line), 0 ,2);
+	$endWith = substr(trim($line), -1 ,1);
+	
+	if (empty($line) || $startWith == '--' || $startWith == '/*' || $startWith == '//') {
+		continue;
+	}
+		
+	$query = $query . $line;
+	if ($endWith == ';') {
+		mysqli_query($conn,$query) or die('<div class="error-response sql-import-response">Problem in executing the SQL query <b>' . $query. '</b></div>');
+		$query= '';		
+	}
 }
-}
- echo "Tables imported successfully";
+echo '<div class="success-response sql-import-response">SQL file imported successfully</div>';
 ?>
