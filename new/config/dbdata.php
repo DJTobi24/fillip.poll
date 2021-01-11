@@ -1,6 +1,6 @@
 <?php 
     $DATENBANK_HOST = 'localhost';
-    $DATENBANK_BENUTZER = 'phpumfrage';
+    $DATENBANK_BENUTZER = 'poll4';
     $DATENBANK_PASSWORT = '25152515?';
-    $DATENBANK_NAME = 'phpumfrage';
+    $DATENBANK_NAME = 'phppoll';
 ?>
