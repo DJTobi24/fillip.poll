@@ -17,10 +17,10 @@ if (isset($_GET['id'])) {
         // Fetch all the poll anwsers
         $umfrage_antwort = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // If the user clicked the "Vote" button...
-        if (isset($_POST['poll_answer'])) {
+        if (isset($_POST['frage_antwort'])) {
             // Update and increase the vote for the answer the user voted for
             $stmt = $pdo->prepare('UPDATE poll_answers SET votes = votes + 1 WHERE id = ?');
-            $stmt->execute([$_POST['poll_answer']]);
+            $stmt->execute([$_POST['frage_antwort']]);
             // Redirect user to the result page
             header ('Location: ergebniss.php?id=' . $_GET['id']);
             exit;
@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
     <form action="stimmen.php?id=<?=$_GET['id']?>" method="post">
         <?php for ($i = 0; $i < count($umfrage_antwort); $i++): ?>
         <label>
-            <input type="radio" name="poll_answer" value="<?=$umfrage_antwort[$i]['id']?>"<?=$i == 0 ? ' checked' : ''?>>
+            <input type="radio" name="frage_antwort" value="<?=$umfrage_antwort[$i]['id']?>"<?=$i == 0 ? ' checked' : ''?>>
             <?=$umfrage_antwort[$i]['title']?>
         </label>
         <?php endfor; ?>
