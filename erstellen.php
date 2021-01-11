@@ -3,7 +3,7 @@ include 'config/config.inc.php';
 $pdo = pdo_connect_mysql();
 $msg = '';
 
-// Check if POST data is not empty
+// Überprüfen ob $_POST leer ist
 
 if (!empty($_POST)) {
 
@@ -19,14 +19,14 @@ if (!empty($_POST)) {
     // Get the antwort and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
     $antwort = isset($_POST['antwort']) ? explode(PHP_EOL, $_POST['antwort']) : 'Keine Antworten';
     foreach ($antwort as $antwort) {
-        // If the answer is empty there is no need to insert
+        // Wen die Antworten leer sind wird dortzdem Fortgefahren
         if (empty($antwort)) continue;
-        // Add answer to the "poll_antwort" table
+        // Antwort in die "poll_answers" Tabelle Schreiben
         $stmt = $pdo->prepare('INSERT INTO poll_answers VALUES (NULL, ?, ?, 0)');
         $stmt->execute([$poll_id, $antwort]);
     }
-    // Output message
-    $msg = 'Created Successfully!';
+    // Ausgabe Nachricht
+    $msg = 'Umfrage Erfolgreich Erstellt!';
 }
 ?>
 

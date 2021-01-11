@@ -1,19 +1,19 @@
 <?php
 function pdo_connect_mysql() {
     // Hier sind die MySql Lgoindaten abgespeichert
-    $DATABASE_HOST = 'localhost';
-    $DATABASE_USER = 'poll4';
-    $DATABASE_PASS = '25152515?';
-    $DATABASE_NAME = 'phppoll';
+    $DATENBANK_HOST = 'localhost';
+    $DATENBANK_BENUTZER = 'poll4';
+    $DATENBANK_PASSWORT = '25152515?';
+    $DATENBANK_NAME = 'phppoll';
     try {
-    	return new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME . ';charset=utf8', $DATABASE_USER, $DATABASE_PASS);
+    	return new PDO('mysql:host=' . $DATENBANK_HOST . ';dbname=' . $DATENBANK_NAME . ';charset=utf8', $DATENBANK_BENUTZER, $DATENBANK_PASSWORT);
     } catch (PDOException $exception) {
-    	// If there is an error with the connection, stop the script and display the error.
-    	die ('Failed to connect to database!');
+    	// Wen es einen Error bei der Verbindung gibt wird er hier angezeigt.
+    	die ('Konnte keine Verbindung zur Datenbank herstellen! | conf.inc.php');
     }
 }
 
-// Template header, feel free to customize this
+// HTML Header der überall eingefügt wird
 function template_header($title) {
     echo <<<EOT
     <!DOCTYPE html>
@@ -34,7 +34,7 @@ function template_header($title) {
     EOT;
     }
 
-    // Template footer
+    // HTML Footer der überall eingefügt wird um z.B. das Impressum Anzuzeigen
 function template_footer() {
     echo <<<EOT
         </body>
