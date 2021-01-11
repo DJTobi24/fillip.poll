@@ -60,7 +60,7 @@ body {
 .home .create-poll {
     display: inline-block;
     text-decoration: none;
-    background-color: #38b673;
+    background-color: #ff9900;
     font-weight: bold;
     font-size: 14px;
     border-radius: 5px;
@@ -69,7 +69,7 @@ body {
     margin: 15px 0;
 }
 .home .create-poll:hover {
-    background-color: #ff9100;
+    background-color: #ffa42d;
 }
 .home table {
     width: 100%;
@@ -77,8 +77,8 @@ body {
     border-collapse: collapse;
 }
 .home table thead {
-    background-color: #ebeef1;
-    border-bottom: 1px solid #d3dae0;
+    background-color: #3b3b3b;
+    border-bottom: 1px solid #1f1f1f;
 }
 .home table thead td {
     padding: 10px;
