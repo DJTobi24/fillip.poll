@@ -87,10 +87,10 @@ body {
     font-size: 14px;
 }
 .home table tbody tr {
-    border-bottom: 1px solid #d3dae0;
+    border-bottom: 1px solid #575757;
 }
 .home table tbody tr:nth-child(even) {
-    background-color: #fbfcfc;
+    background-color: #333333;
 }
 .home table tbody tr:hover {
     background-color: #376ab7;
