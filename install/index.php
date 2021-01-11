@@ -89,18 +89,18 @@ function find_SQL_Version() {
   </tr>
   <tr>
 <?php
-if(empty($php_error)) echo "<td>PHP Version: $php_version - OK!<//td>";
+if(empty($php_error)) echo "<td>PHP</td> <td>$php_version</td> <td>OK!</td>";
 else echo "<td style='color:red;'>$php_error/td>";?>
   </tr>
   </table>
 <?php
-if(empty($mail_error)) echo "<span style='color:green;'>PHP-Mail - OK!</span><br>";
+if(empty($mail_error)) echo "<td>PHP-Mail</td> <td>OK!</td>";
 else echo "<span style='color:red;'>$mail_error</span><br>";
 
-if(empty($safe_mode_error)) echo "<span style='color:green;'>SafeMode - OK!</span><br>";
+if(empty($safe_mode_error)) echo "<td>SafeMode</td><td>OK!</td>";
 else echo "<span style='color:red;'>$php_error</span><br>";
 
-if(empty($mysql_error)) echo "<span style='color:green;'>SafeMode - OK!</span><br>";
+if(empty($mysql_error)) echo "<td>MySQL</td> <td>$mysql_version</td> <td>OK!</td>";
 else echo "<span style='color:red;'>$mysql_error</span><br>";
 ?>
 </body>
