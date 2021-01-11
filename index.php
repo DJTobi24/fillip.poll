@@ -12,7 +12,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="content home">
 	<h2>Umfragen</h2>
-	<p>Index Seite</p>
+	<p>Hier Findest du alle Umfragen die Erstellt wurden</p>
 	<a href="erstellen.php" class="create-poll">Umfrage Erstellen</a>
 	<table>
         <thead>
