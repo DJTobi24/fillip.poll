@@ -6,6 +6,6 @@ $pdo = pdo_connect_mysql();
 
 <?=template_header('Example Page')?>
 
-<p>Hello World! Welcome to my custom page!</p>
+<p>Example Seite Test 123 Hallöö</p>
 
 <?=template_footer()?>

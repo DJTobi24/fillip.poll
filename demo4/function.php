@@ -27,8 +27,8 @@ function template_header($title) {
         <body>
         <nav class="navtop">
             <div>
-                <h1>Voting & Poll System</h1>
-                <a href="index.php"><i class="fas fa-poll-h"></i>Polls</a>
+                <h1>Umfrage Php Script</h1>
+                <a href="index.php"><i class="fas fa-poll-h"></i>Umfragen</a>
             </div>
         </nav>
     EOT;
