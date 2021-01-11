@@ -1,13 +1,21 @@
+<script type="text/javascript">
+	function überprüfung()
+	{
+		if (document.erstellen.frage.value == "") {
+			alert('Das Eingabefeld wurde nicht ausgefüllt');
+			return false;
+		}
+	}
+</script>
 <?php
 include 'config/config.inc.php';
 $pdo = pdo_connect_mysql();
 $msg = '';
 
 // Check if POST data is not empty
+
 if (!empty($_POST)) {
-    if( empty($_POST['frage']) OR empty($_POST['beschr']) OR empty($_POST['answers']) ) {
-        echo "Nicht alle Felder ausgefüllt!";
-   }
+
     // Post data not empty insert a new record
     // Check if POST variable "frage" exists, if not default the value to blank, basically the same for all variables
     $frage = isset($_POST['frage']) ? $_POST['frage'] : '';
@@ -35,7 +43,7 @@ if (!empty($_POST)) {
 
 <div class="content update">
 	<h2>Umfrage Erstellen</h2>
-    <form action="erstellen.php" method="post">
+    <form action="erstellen.php" method="post" onSubmit="return überprüfung()">
         <label for="frage">Frage</label>
         <input type="text" name="frage" id="frage">
         <label for="beschr">Beschreibung</label>
