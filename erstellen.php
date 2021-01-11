@@ -32,12 +32,12 @@ if (!empty($_POST)) {
 
 <div class="content update">
 	<h2>Create Poll</h2>
-    <form action="create.php" method="post">
-        <label for="title">Title</label>
+    <form action="erstellen.php" method="post">
+        <label for="title">Frage</label>
         <input type="text" name="title" id="title">
-        <label for="desc">Description</label>
+        <label for="desc">Beschreibung</label>
         <input type="text" name="desc" id="desc">
-        <label for="answers">Answers (per line)</label>
+        <label for="answers">Antworten (pro Zeile 1)</label>
         <textarea name="answers" id="answers"></textarea>
         <input type="submit" value="Create">
     </form>
