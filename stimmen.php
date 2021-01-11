@@ -8,14 +8,14 @@ if (isset($_GET['id'])) {
     $stmt = $pdo->prepare('SELECT * FROM polls WHERE id = ?');
     $stmt->execute([$_GET['id']]);
     // Fetch the record
-    $poll = $stmt->fetch(PDO::FETCH_ASSOC);
+    $umfrage = $stmt->fetch(PDO::FETCH_ASSOC);
     // Check if the poll record exists with the id specified
-    if ($poll) {
+    if ($umfrage) {
         // MySQL query that selects all the poll answers
         $stmt = $pdo->prepare('SELECT * FROM poll_answers WHERE poll_id = ?');
         $stmt->execute([$_GET['id']]);
         // Fetch all the poll anwsers
-        $poll_answers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $umfrage_antwort = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // If the user clicked the "Vote" button...
         if (isset($_POST['poll_answer'])) {
             // Update and increase the vote for the answer the user voted for
@@ -36,18 +36,18 @@ if (isset($_GET['id'])) {
 <?=template_header('Umfrage Ergebniss')?>
 
 <div class="content poll-vote">
-	<h2><?=$poll['title']?></h2>
-	<p><?=$poll['desc']?></p>
+	<h2><?=$umfrage['title']?></h2>
+	<p><?=$umfrage['desc']?></p>
     <form action="stimmen.php?id=<?=$_GET['id']?>" method="post">
-        <?php for ($i = 0; $i < count($poll_answers); $i++): ?>
+        <?php for ($i = 0; $i < count($umfrage_antwort); $i++): ?>
         <label>
-            <input type="radio" name="poll_answer" value="<?=$poll_answers[$i]['id']?>"<?=$i == 0 ? ' checked' : ''?>>
-            <?=$poll_answers[$i]['title']?>
+            <input type="radio" name="poll_answer" value="<?=$umfrage_antwort[$i]['id']?>"<?=$i == 0 ? ' checked' : ''?>>
+            <?=$umfrage_antwort[$i]['title']?>
         </label>
         <?php endfor; ?>
         <div>
             <input type="submit" value="Vote">
-            <a href="ergebniss.php?id=<?=$poll['id']?>">Stimmen Anzeigen</a>
+            <a href="ergebniss.php?id=<?=$umfrage['id']?>">Stimmen Anzeigen</a>
         </div>
     </form>
 </div>
