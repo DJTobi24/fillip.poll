@@ -1,7 +1,26 @@
 <?php
 class Poll {
   // (A) Datenbankverbinung via PDO
-  include("database.inc.php");
+  private $pdo = null;
+  private $stmt = null;
+  public $error = "";
+  function __construct(){
+    try {
+      $this->pdo = new PDO(
+        "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=".DB_CHARSET, 
+        DB_USER, DB_PASSWORD, [
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
+      );
+    } catch (Exception $ex) { die($ex->getMessage()); }
+  }
+
+  // (B) Datenbank Schließen
+  function __destruct(){
+    if ($this->stmt!==null) { $this->stmt = null; }
+    if ($this->pdo!==null) { $this->pdo = null; }
+  }
 
   // (C) Frage Speichern
   function save ($question, $options, $pid=null){
@@ -155,11 +174,11 @@ class Poll {
 }
 
 // (G) DATABASE SETTINGS - CHANGE TO YOUR OWN!
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'test');
+define('DB_HOST', '127.0.0.1');
+define('DB_NAME', 'poll2');
 define('DB_CHARSET', 'utf8');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
+define('DB_USER', 'poll2');
+define('DB_PASSWORD', '25152515?');
 
 // (H) NEW POLL OBJECT
 $POLL = new Poll();
