@@ -10,7 +10,11 @@ try {
 	 PRIMARY KEY (id)
 	 )ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;;" ;
      $db->exec($sql);
-     print("Created $table Table.\n");
+	 print("Created $table Table.\n");
+
+     $sql1 ="INSERT INTO `umfragen` (`id`, `frage`, `besch`) VALUES (1, 'Was ist deine Lieblings Programmiersprache?', '');" ;
+		$db->exec($sql1);
+		print("Created $table Table.\n");
 
 } catch(PDOException $e) {
     echo $e->getMessage();//Remove or change message in production code
