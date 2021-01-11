@@ -1,6 +1,6 @@
 <?php
 
-include("config/database.inc.php"); // <- Datenbank einbinden
+$filename = '1-database.sql';
 
 // Temporary variable, used to store current query
 $templine = '';
