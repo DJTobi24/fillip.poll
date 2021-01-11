@@ -26,10 +26,10 @@ if (isset($_GET['id'])) {
             exit;
         }
     } else {
-        die ('Poll with that ID does not exist.');
+        die ('Eine Umfrage mit dieser ID Existiert nicht.');
     }
 } else {
-    die ('No poll ID specified.');
+    die ('Keine ID ausgewählt.');
 }
 ?>
 
@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
         <?php endfor; ?>
         <div>
             <input type="submit" value="Vote">
-            <a href="ergebniss.php?id=<?=$poll['id']?>">View Result</a>
+            <a href="ergebniss.php?id=<?=$poll['id']?>">Stimmen Anzeigen</a>
         </div>
     </form>
 </div>
