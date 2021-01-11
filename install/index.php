@@ -7,8 +7,7 @@ if($php_version<7)
   $php_error="Die PHP Version: $php_version - ist zu alt!";
 }
 
- if(empty($php_error)) echo "<span style='color:green;'>$php_version - OK!</span>";
-else echo "<span style='color:red;'>$php_error</span>";
+
 
 // PHP Email Aktiv
 if(!function_exists('mail'))
@@ -16,8 +15,7 @@ if(!function_exists('mail'))
   $mail_error="PHP Mail Funktion ist nicht Aktiviert!";
 }
 
-if(empty($mail_error)) echo "<span style='color:green;'> OK!</span>";
-else echo "<span style='color:red;'>$mail_error</span>";
+
 
 // PHP Safe Mode 
 if( ini_get("safe_mode") )
@@ -26,8 +24,7 @@ if( ini_get("safe_mode") )
   $safe_mode_error="Bitte gehen sie aus dem PHP Safe Mode heraus";
 }
 
-if(empty($safe_mode_error)) echo "<span style='color:green;'> - OK!</span>";
-else echo "<span style='color:red;'>$php_error</span>";
+
 
 ?>
 
@@ -54,3 +51,13 @@ function find_SQL_Version() {
   }
 
   ?>
+<?php
+if(empty($php_error)) echo "<span style='color:green;'>$php_version - OK!</span>";
+else echo "<span style='color:red;'>$php_error</span><br>";
+
+if(empty($mail_error)) echo "<span style='color:green;'> OK!</span><br>";
+else echo "<span style='color:red;'>$mail_error</span>";
+
+if(empty($safe_mode_error)) echo "<span style='color:green;'> - OK!</span><br>";
+else echo "<span style='color:red;'>$php_error</span>";
+?>
