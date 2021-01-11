@@ -91,7 +91,7 @@ body {
     border-bottom: 1px solid #575757;
 }
 .home table tbody tr:nth-child(even) {
-    background-color: #333333;
+    background-color: #000000;
 }
 .home table tbody tr:hover {
     background-color: #376ab7;
