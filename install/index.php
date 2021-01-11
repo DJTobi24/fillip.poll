@@ -15,12 +15,19 @@ if(!function_exists('mail'))
 {
   $mail_error="PHP Mail Funktion ist nicht Aktiviert!";
 }
+
+if(empty($mail_error)) echo "<span style='color:green;'> OK!</span>";
+else echo "<span style='color:red;'>$mail_error</span>";
+
 // PHP Safe Mode 
 if( ini_get("safe_mode") )
 {
   $error=true;
   $safe_mode_error="Bitte gehen sie aus dem PHP Safe Mode heraus";
 }
+
+if(empty($safe_mode_error)) echo "<span style='color:green;'> - OK!</span>";
+else echo "<span style='color:red;'>$php_error</span>";
 
 ?>
 
