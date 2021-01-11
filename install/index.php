@@ -94,13 +94,13 @@ else echo "<td style='color:red;'>$php_error/td>";?>
   </tr>
   <tr>
 <?php
-if(empty($mail_error)) echo "<td>PHP-Mail</td> <td>OK!</td>";
+if(empty($mail_error)) echo "<td>PHP-Mail</td> <td>$php_version</td> <td>OK!</td>";
 else echo "<span style='color:red;'>$mail_error</span><br>";
 ?>
   </tr>
   <tr>
 <?php
-if(empty($safe_mode_error)) echo "<td>SafeMode</td><td>OK!</td>";
+if(empty($safe_mode_error)) echo "<td>SafeMode</td> <td>$php_version</td> <td>OK!</td>";
 else echo "<span style='color:red;'>$php_error</span><br>";
 ?>
   </tr>
