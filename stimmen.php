@@ -2,26 +2,26 @@
 include 'config/config.inc.php';
 // Mit dem Mysql Server Verbinden
 $pdo = pdo_connect_mysql();
-// If the GET request "id" exists (poll id)...
+// Schaut ob der Datensatz mit der angegebenen ID vorhanden ist.
 if (isset($_GET['id'])) {
-    // MySQL query that selects the poll records by the GET request "id"
+    // MySQL query such aus der Tabelle die GET Anforderung ID heraus
     $stmt = $pdo->prepare('SELECT * FROM polls WHERE id = ?');
     $stmt->execute([$_GET['id']]);
-    // Fetch the record
+    // Holt sich die Daten
     $umfrage = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Check if the poll record exists with the id specified
+    // Schaut ob die ID existiert
     if ($umfrage) {
-        // MySQL query that selects all the poll answers
+        // MySQL query wählt alle antworten aus
         $stmt = $pdo->prepare('SELECT * FROM poll_answers WHERE poll_id = ?');
         $stmt->execute([$_GET['id']]);
-        // Fetch all the poll anwsers
+        // holt sich die Daten
         $umfrage_antwort = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // If the user clicked the "Vote" button...
+        //Wen der Benutzer den Abstimmen Button Betätigt
         if (isset($_POST['frage_antwort'])) {
-            // Update and increase the vote for the answer the user voted for
+            // Update die Stimmen
             $stmt = $pdo->prepare('UPDATE poll_answers SET votes = votes + 1 WHERE id = ?');
             $stmt->execute([$_POST['frage_antwort']]);
-            // Redirect user to the result page
+            // Schickt den Benutzer zu den ergebnissen.
             header ('Location: ergebniss.php?id=' . $_GET['id']);
             exit;
         }
@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
         </label>
         <?php endfor; ?>
         <div>
-            <input type="submit" value="Vote">
+            <input type="submit" value="Abstimmen">
             <a href="ergebniss.php?id=<?=$umfrage['id']?>">Stimmen Anzeigen</a>
         </div>
     </form>

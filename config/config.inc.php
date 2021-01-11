@@ -2,6 +2,7 @@
     function pdo_connect_mysql() {
         // Hier sind die MySql Lgoindaten abgespeichert
         include 'dbdata.php';
+        // Danebankverbindung wird hergestellt.
         try {
     	    return new PDO('mysql:host=' . $DATENBANK_HOST . ';dbname=' . $DATENBANK_NAME . ';charset=utf8', $DATENBANK_BENUTZER, $DATENBANK_PASSWORT);
             } catch (PDOException $exception) {
@@ -34,6 +35,9 @@
     // HTML Footer der überall eingefügt wird um z.B. das Impressum Anzuzeigen
     function template_footer() {
         echo <<<EOT
+                <div class="footer">
+                    <p>Das ist der Footer der Seite</p>
+                </div>
             </body>
         </html>
         EOT;

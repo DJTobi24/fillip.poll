@@ -29,7 +29,7 @@ if( ini_get("safe_mode") )
 ?>
 
 <?php
-// declare function
+// MySQL Version
 function find_SQL_Version() {
     $output = shell_exec('mysql -V');
     preg_match('@[0-9]+\.[0-9]+\.[0-9]+@', $output, $version);
@@ -42,7 +42,7 @@ function find_SQL_Version() {
     if($mysql_version==-1) $mysql_error="Die MySQL Version wird beim Nächsten schritt überprüft.";
     else $mysql_error="Die Mysql Version: $mysql_version - ist zu Alt. Version 5 oder höher wird benötigt.";
   }
-
+// Sessions
   $_SESSION['umfrage_sessions_work']=1;
   if(empty($_SESSION['umfrage_sessions_work']))
   {
@@ -162,9 +162,15 @@ function find_SQL_Version() {
         else echo "<span style='color:red;'>$mysql_error</span><br>";
         ?>
       </tr>
+      <tr>
+        <?php
+        if(empty$session_error)) echo "<td>Session</td> <td>-/-</td> <td>OK!</td>";
+        else echo "<span style='color:red;'>$session_error</span><br>";
+        ?>
+      </tr>
     </table>
     <form method="post" action="mysqlinsert.php">
-    <input type="submit" name="install" value="Installieren" class="button button">
+    <input type="submit" name="install" value="Datenbank Einfügen" class="button button">
     </form>
   </body>
 </html>

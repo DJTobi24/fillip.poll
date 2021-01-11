@@ -2,31 +2,31 @@
 include 'config/config.inc.php';
 // Mit dem Mysql Server Verbinden
 $pdo = pdo_connect_mysql();
-// If the GET request "id" exists (poll id)...
+// Schaut ob der die "id" im GET Befehl existiert.
 if (isset($_GET['id'])) {
-    // MySQL query that selects the poll records by the GET request "id"
+    // MySQL query wählt von der Tabelle "poll" mit dem GET Request und der ID das ERgebniss aus.
     $stmt = $pdo->prepare('SELECT * FROM polls WHERE id = ?');
     $stmt->execute([$_GET['id']]);
-    // Fetch the record
+    // Holt sich den Datensatzt
     $umfrag = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Check if the poll record exists with the id specified
+    // Schaut ob der Datensatz mit der angegebenen ID vorhanden ist.
     if ($umfrag) {
-        // MySQL Query that will get all the answers from the "poll_answers" table ordered by the number of votes (descending)
+        // Alle Antworten aus der Tabelle "poll_answers" werden nach der Anzahl der Stimmen (absteigend) Sotiert
         $stmt = $pdo->prepare('SELECT * FROM poll_answers WHERE poll_id = ? ORDER BY votes DESC');
         $stmt->execute([$_GET['id']]);
-        // Fetch all poll answers
+        // Holt sich alle Stimmen
         $umfrag_antworten = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // Total number of votes, will be used to calculate the percentage
+        // Alle Stimmen werden zusammen gezählt um die Prozentzahl richtig auszurechen.
         $total_abstimmungen = 0;
         foreach ($umfrag_antworten as $umfrag_antwort) {
-            // Every poll answers votes will be added to total votes
+            // Jede Stimmen werden zu den Gesammtstimmen addiert.
             $total_abstimmungen += $umfrag_antwort['votes'];
         }
     } else {
-        die ('Poll with that ID does not exist.');
+        die ('Die Angeforderte Umfrage ID gibt es nicht.');
     }
 } else {
-    die ('No poll ID specified.');
+    die ('Sie haben keine Umfrage ID angegeben.');
 }
 ?>
 
@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
     <div class="wrapper">
         <?php foreach ($umfrag_antworten as $umfrag_antwort): ?>
         <div class="poll-question">
-            <p><?=$umfrag_antwort['title']?> <span>(<?=$umfrag_antwort['votes']?> Votes)</span></p>
+            <p><?=$umfrag_antwort['title']?> <span>(<?=$umfrag_antwort['votes']?> Stimme(n))</span></p>
             <div class="result-bar" style= "width:<?=@round(($umfrag_antwort['votes']/$total_abstimmungen)*100)?>%">
                 <?=@round(($umfrag_antwort['votes']/$total_abstimmungen)*100)?>%
             </div>

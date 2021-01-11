@@ -7,16 +7,16 @@ $msg = '';
 
 if (!empty($_POST)) {
 
-    // Post data not empty insert a new record
-    // Check if POST variable "frage" exists, if not default the value to blank, basically the same for all variables
-    $frage = isset($_POST['frage']) ? $_POST['frage'] : 'Keine Frage';
-    $beschr = isset($_POST['beschr']) ? $_POST['beschr'] : 'Keine Beschreibung';
-    // Insert new record into the "polls" table
+    // Füge die Eingegebenen Datensetze ein
+    // Schaue ob in der Post Variable etwas drinnen steht, wen nicht das bleibt es leer.
+    $frage = isset($_POST['frage']) ? $_POST['frage'] : '';
+    $beschr = isset($_POST['beschr']) ? $_POST['beschr'] : '';
+    // Neuer Eintrag in die polls Tabelle mit den obrigen daten
     $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?)');
     $stmt->execute([$frage, $beschr]);
-    // Below will get the last insert ID, this will be the poll id
+    // Unten erhalten Sie die letzte Einfügungs-ID. Dies ist die Umfrage-ID
     $poll_id = $pdo->lastInsertId();
-    // Get the antwort and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
+    // Schreibe die Antworten in einen array, damit wir jede Antwort in die "poll_answers" Tabelle einfügen können.
     $antwort = isset($_POST['antwort']) ? explode(PHP_EOL, $_POST['antwort']) : 'Keine Antworten';
     foreach ($antwort as $antwort) {
         // Wen die Antworten leer sind wird dortzdem Fortgefahren
