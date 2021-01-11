@@ -65,27 +65,4 @@ else echo "<span style='color:red;'>$mail_error</span><br>";
 if(empty($safe_mode_error)) echo "<span style='color:green;'>SafeMode - OK!</span><br>";
 else echo "<span style='color:red;'>$php_error</span><br>";
 
-$connect_code="<?php
-define('DBSERVER','".$_POST['dbhost']."');
-define('DBNAME','".$_POST['dbname']."');
-define('DBUSER','".$_POST['dbuser']."');
-define('DBPASS','".$_POST['dbpass']."');
-?>";
-
-
-
-if(!is_writable("db_connect.php"))
-{
-  $error_msg="<p>Sorry, I can't write to <b>inc/db_connect.php</b>.
-  You will have to edit the file yourself. Here is what you need to insert in that file:<br /><br />
-  <textarea rows='5' cols='50' onclick='this.select();'>$connect_code</textarea></p>";
-}
-else
-{
-  $fp = fopen('inc/db_connect.php', 'wb');
-  fwrite($fp,$connect_code);
-  fclose($fp);
-  chmod('inc/db_connect.php', 0666);
-}
-
 ?>

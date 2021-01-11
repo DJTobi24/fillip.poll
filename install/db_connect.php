@@ -1,12 +1,5 @@
 <?php 
 
-$connect_code="<?php
-define('DBSERVER','".$_POST['dbhost']."');
-define('DBNAME','".$_POST['dbname']."');
-define('DBUSER','".$_POST['dbuser']."');
-define('DBPASS','".$_POST['dbpass']."');
-?>";
-
 
 $db_error=false;
 // try to connect to the DB, if not display error

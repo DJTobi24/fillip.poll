@@ -1,10 +1,10 @@
 <?php
 function pdo_connect_mysql() {
     // Hier sind die MySql Lgoindaten abgespeichert
-    $DATENBANK_HOST = 'localhost';
-    $DATENBANK_BENUTZER = 'poll4';
-    $DATENBANK_PASSWORT = '25152515?';
-    $DATENBANK_NAME = 'phppoll';
+
+    include 'dbdata.php';
+
+
     try {
     	return new PDO('mysql:host=' . $DATENBANK_HOST . ';dbname=' . $DATENBANK_NAME . ';charset=utf8', $DATENBANK_BENUTZER, $DATENBANK_PASSWORT);
     } catch (PDOException $exception) {
