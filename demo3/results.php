@@ -1,11 +1,9 @@
-<?php 
-include('config/header.php');
-?>
-<title>phpzag.com : Demo Poll and Voting System with PHP, MySQL & jQuery</title>
+
+<title>Demo</title>
 <style>
 
 </style>
-<?php include('config/container.php');?>
+
 <div class="container">
 	<h2>Poll and Voting System with PHP, MySQL & jQuery</h2>	
 	<?php
@@ -30,4 +28,3 @@ include('config/header.php');
 	?>	
 	<a class="btn btn-default read-more" href="index.php">Back to Poll</a>	
 </div>
-<?php include('config/footer.php');?>
