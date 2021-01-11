@@ -33,12 +33,12 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<?=template_header('Poll Vote')?>
+<?=template_header('Umfrage Ergebniss')?>
 
 <div class="content poll-vote">
 	<h2><?=$poll['title']?></h2>
 	<p><?=$poll['desc']?></p>
-    <form action="vote.php?id=<?=$_GET['id']?>" method="post">
+    <form action="ergebniss.php?id=<?=$_GET['id']?>" method="post">
         <?php for ($i = 0; $i < count($poll_answers); $i++): ?>
         <label>
             <input type="radio" name="poll_answer" value="<?=$poll_answers[$i]['id']?>"<?=$i == 0 ? ' checked' : ''?>>
