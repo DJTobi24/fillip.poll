@@ -78,6 +78,21 @@ function find_SQL_Version() {
   background-color: #4CAF50;
   color: white;
 }
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button {font-size: 24px;}
+
 </style>
 </head>
 <body>
@@ -111,5 +126,8 @@ else echo "<span style='color:red;'>$mysql_error</span><br>";
 ?>
   </tr>
  </table>
+ <form method="post" action="mysqlinsert.php">
+ <input type="submit" name="install" value="Installieren" class="button button">
+ </form>
 </body>
 </html>

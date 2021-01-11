@@ -1,4 +1,5 @@
 <?php
+if(isset($_POST['sent'])){
 include("database.inc.php");
 
 $query = '';
@@ -19,4 +20,5 @@ foreach ($sqlScript as $line)	{
 	}
 }
 echo '<div class="success-response sql-import-response">SQL Datei Erfolgreich Importiert</div>';
+}
 ?>
