@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
         <?php endfor; ?>
         <div>
             <input type="submit" value="Vote">
-            <a href="result.php?id=<?=$poll['id']?>">View Result</a>
+            <a href="ergebniss.php?id=<?=$poll['id']?>">View Result</a>
         </div>
     </form>
 </div>
