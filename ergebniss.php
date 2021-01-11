@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<?=template_header('Poll Results')?>
+<?=template_header('Umfrage Ergebnisse')?>
 
 <div class="content poll-result">
 	<h2><?=$umfrag['title']?></h2>
