@@ -1,5 +1,5 @@
 <?php
-include 'function.php';
+include 'config/config.inc.php';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 // If the GET request "id" exists (poll id)...

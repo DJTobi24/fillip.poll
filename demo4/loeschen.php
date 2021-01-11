@@ -1,5 +1,5 @@
 <?php
-include 'function.php';
+include 'config/config.inc.php';
 $pdo = pdo_connect_mysql();
 $msg = '';
 // Check that the poll ID exists
@@ -42,8 +42,8 @@ if (isset($_GET['id'])) {
     <?php else: ?>
 	<p>Are you sure you want to delete poll #<?=$poll['id']?>?</p>
     <div class="yesno">
-        <a href="delete.php?id=<?=$poll['id']?>&confirm=yes">Yes</a>
-        <a href="delete.php?id=<?=$poll['id']?>&confirm=no">No</a>
+        <a href="loeschen.php?id=<?=$poll['id']?>&confirm=yes">Yes</a>
+        <a href="loeschen.php?id=<?=$poll['id']?>&confirm=no">No</a>
     </div>
     <?php endif; ?>
 </div>

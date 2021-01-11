@@ -1,5 +1,5 @@
 <?php
-include 'function.php';
+include 'config/config.inc.php';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 // MySQL query that selects all the polls and poll answers
@@ -11,15 +11,15 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?=template_header('Polls')?>
 
 <div class="content home">
-	<h2>Polls</h2>
-	<p>Welcome to the index page, you can view the list of polls below.</p>
-	<a href="create.php" class="create-poll">Create Poll</a>
+	<h2>Umfragen</h2>
+	<p>Index Seite</p>
+	<a href="erstellen.php" class="create-poll">Umfrage Erstellen</a>
 	<table>
         <thead>
             <tr>
                 <td>#</td>
                 <td>Title</td>
-				<td>Answers</td>
+				<td>Antworten</td>
                 <td></td>
             </tr>
         </thead>
@@ -30,8 +30,8 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?=$poll['title']?></td>
 				<td><?=$poll['answers']?></td>
                 <td class="actions">
-					<a href="vote.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
-                    <a href="delete.php?id=<?=$poll['id']?>" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>
+					<a href="stimmen.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
+                    <a href="loeschen.php?id=<?=$poll['id']?>" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
             <?php endforeach; ?>

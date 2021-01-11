@@ -1,5 +1,5 @@
 <?php
-include 'config/config.inc.php';
+include 'function.php';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 // If the GET request "id" exists (poll id)...
@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
 <div class="content poll-vote">
 	<h2><?=$poll['title']?></h2>
 	<p><?=$poll['desc']?></p>
-    <form action="stimmen.php?id=<?=$_GET['id']?>" method="post">
+    <form action="vote.php?id=<?=$_GET['id']?>" method="post">
         <?php for ($i = 0; $i < count($poll_answers); $i++): ?>
         <label>
             <input type="radio" name="poll_answer" value="<?=$poll_answers[$i]['id']?>"<?=$i == 0 ? ' checked' : ''?>>
@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
         <?php endfor; ?>
         <div>
             <input type="submit" value="Vote">
-            <a href="ergebniss.php?id=<?=$poll['id']?>">Ergebnisse anzeigen</a>
+            <a href="result.php?id=<?=$poll['id']?>">View Result</a>
         </div>
     </form>
 </div>
