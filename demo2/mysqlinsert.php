@@ -12,9 +12,9 @@ $mysql_password = '25152515?';
 $mysql_database = 'poll2';
 
 // Connect to MySQL server
-mysql_connect($mysql_host, $mysql_username, $mysql_password) or die('Error connecting to MySQL server: ' . mysql_error());
+mysqli_connect($mysql_host, $mysql_username, $mysql_password) or die('Error connecting to MySQL server: ' . mysqli_error());
 // Select database
-mysql_select_db($mysql_database) or die('Error selecting MySQL database: ' . mysql_error());
+mysqli_select_db($mysql_database) or die('Error selecting MySQL database: ' . mysqli_error());
 
 // Temporary variable, used to store current query
 $templine = '';
@@ -33,7 +33,7 @@ $templine .= $line;
 if (substr(trim($line), -1, 1) == ';')
 {
     // Perform the query
-    mysql_query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysql_error() . '<br /><br />');
+    mysqli_query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysqli_error() . '<br /><br />');
     // Reset temp variable to empty
     $templine = '';
 }
