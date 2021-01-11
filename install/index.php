@@ -52,17 +52,56 @@ function find_SQL_Version() {
 
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
+#customers tr:nth-child(even){background-color: #f2f2f2;}
 
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<table id="customers">
+  <tr>
+    <th>Name</th>
+    <th>Version</th>
+    <th>Status</th>
+  </tr>
+  <tr>
 <?php
-if(empty($php_error)) echo "<span style='color:green;'>PHP Version: $php_version - OK!</span><br>";
-else echo "<span style='color:red;'>$php_error</span><br>";
-
+if(empty($php_error)) echo "<td>PHP Version: $php_version - OK!<//td>";
+else echo "<td style='color:red;'>$php_error/td>";?>
+  </tr>
+  </table>
+<?php
 if(empty($mail_error)) echo "<span style='color:green;'>PHP-Mail - OK!</span><br>";
 else echo "<span style='color:red;'>$mail_error</span><br>";
 
 if(empty($safe_mode_error)) echo "<span style='color:green;'>SafeMode - OK!</span><br>";
 else echo "<span style='color:red;'>$php_error</span><br>";
 
+if(empty($mysql_error)) echo "<span style='color:green;'>SafeMode - OK!</span><br>";
+else echo "<span style='color:red;'>$mysql_error</span><br>";
 ?>
+</body>
+</html>

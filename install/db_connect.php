@@ -1,22 +1,17 @@
-<?php 
+<?php
+function OpenCon()
+ {
+  include 'dbdata.php';
 
-
-$db_error=false;
-// try to connect to the DB, if not display error
-if(!@mysqli_connect($_POST['dbhost'],$_POST['dbuser'],$_POST['dbpass']))
-{
-  $db_error=true;
-  $error_msg="Sorry, these details are not correct.
-  Here is the exact error: ".mysqli_error();
-}
+ $conn = new mysqli($DATENBANK_HOST, $DATENBANK_BENUTZER, $DATENBANK_PASSWORT,$DATENBANK_NAME) or die("Connect failed: %s\n". $conn -> error);
  
-if(!$db_error and !@mysqli_select_db($_POST['dbname']))
-{
-  $db_error=true;
-  $error_msg="The host, username and password are correct.
-  But something is wrong with the given database.
-  Here is the MySQL error: ".mysqli_error();
-}
-
-
-?>
+ return $conn;
+ }
+ 
+function CloseCon($conn)
+ {
+ $conn -> close();
+ }
+ $conn = OpenCon();
+ echo '<script>console.log("Consolen LOG: Datenbank Verbunden")</script>';
+ ?>
