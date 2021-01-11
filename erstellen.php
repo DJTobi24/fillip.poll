@@ -18,12 +18,12 @@ if (!empty($_POST)) {
     $poll_id = $pdo->lastInsertId();
     // Get the antwort and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
     $antwort = isset($_POST['antwort']) ? explode(PHP_EOL, $_POST['antwort']) : 'Keine Antworten';
-    foreach ($antwort as $answer) {
+    foreach ($antwort as $antwort) {
         // If the answer is empty there is no need to insert
-        if (empty($answer)) continue;
+        if (empty($antwort)) continue;
         // Add answer to the "poll_antwort" table
         $stmt = $pdo->prepare('INSERT INTO poll_answers VALUES (NULL, ?, ?, 0)');
-        $stmt->execute([$poll_id, $answer]);
+        $stmt->execute([$poll_id, $antwort]);
     }
     // Output message
     $msg = 'Created Successfully!';
