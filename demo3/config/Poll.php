@@ -1,21 +1,8 @@
 <?php
 class Poll{
-    private $host  = 'localhost';
-    private $user  = 'root';
-    private $password   = '';
-    private $database  = 'demos';            
-    private $dbConnect = false;
-    private $pollTable = 'poll';
-    public function __construct(){
-        if(!$this->dbConnect){ 
-            $conn = new mysqli($this->host, $this->user, $this->password, $this->database);
-            if($conn->connect_error){
-                die("Failed to connect with MySQL: " . $conn->connect_error);
-            }else{
-                $this->dbConnect = $conn;
-            }
-        }
-    }
+	
+	include("database.inc.php");
+
 	private function getData($sqlQuery) {
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
 		if(!$result){
