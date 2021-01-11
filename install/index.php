@@ -1,83 +1,126 @@
-<?php
-// PHP Version Prüfen
-$php_version=phpversion();
-if($php_version<7)
-{
-  $error=true;
-  $php_error="Die PHP Version: $php_version - ist zu alt!";
-}
-
-
-
-// PHP Email Aktiv
-if(!function_exists('mail'))
-{
-  $mail_error="PHP Mail Funktion ist nicht Aktiviert!";
-}
-
-
-
-// PHP Safe Mode 
-if( ini_get("safe_mode") )
-{
-  $error=true;
-  $safe_mode_error="Bitte gehen sie aus dem PHP Safe Mode heraus";
-}
-
-
-
-?>
 
 <?php
-// declare function
-function find_SQL_Version() {
-    $output = shell_exec('mysql -V');
-    preg_match('@[0-9]+\.[0-9]+\.[0-9]+@', $output, $version);
-    return @$version[0]?$version[0]:-1;
-  }
-   
-  $mysql_version=find_SQL_Version();
-  if($mysql_version<5)
-  {
-    if($mysql_version==-1) $mysql_error="Die MySQL Version wird beim Nächsten schritt überprüft.";
-    else $mysql_error="Die Mysql Version: $mysql_version - ist zu Alt. Version 5 oder höher wird benötigt.";
-  }
+error_reporting(0);
+$db_config_path = '../config/config.inc.php';
 
-  $_SESSION['umfrage_sessions_work']=1;
-  if(empty($_SESSION['umfrage_sessions_work']))
-  {
-    $error=true;
-    $session_error="Sessions sind deaktiviert!";
-  }
+if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST) {
+    
+    require_once('taskCoreClass.php');
+    require_once('includes/databaseLibrary.php');
 
-?>
+    $core = new Core();
+    $database = new Database();
 
-
-
-
-<?php
-if(empty($php_error)) echo "<span style='color:green;'>$php_version - OK!</span><br>";
-else echo "<span style='color:red;'>$php_error</span><br>";
-
-if(empty($mail_error)) echo "<span style='color:green;'>PHP-Mail - OK!</span><br>";
-else echo "<span style='color:red;'>$mail_error</span><br>";
-
-if(empty($safe_mode_error)) echo "<span style='color:green;'>SafeMode - OK!</span><br>";
-else echo "<span style='color:red;'>$php_error</span><br>";
-
-
-if(!is_writable("db_connect.php"))
-{
-  $error_msg="<p>Sorry, I can't write to <b>inc/db_connect.php</b>.
-  You will have to edit the file yourself. Here is what you need to insert in that file:<br /><br />
-  <textarea rows='5' cols='50' onclick='this.select();'>$connect_code</textarea></p>";
+    if(!empty($_POST['hostname']) && !empty($_POST['username']) && !empty($_POST['database'])){
+        if($database->create_database($_POST) == false)
+        {
+            $message = $core->show_message('error',"The database could not be created, make sure your the host, username, password, database name is correct.");
+        }else if ($core->write_config($_POST) == false)
+        {
+            $message = $core->show_message('error',"The database configuration file could not be written, please chmod application/config/database.php file to 777");
+        }
+        else if ($database->create_tables($_POST) == false)
+        {
+            $message = $core->show_message('error',"The database could not be created, make sure your the host, username, password, database name is correct.");
+        } 
+        else if ($core->checkFile() == false)
+        {
+            $message = $core->show_message('error',"File application/config/database.php is Empty");
+        }
+         
+        if(!isset($message)) {
+            $core->delete_directory('../install/');
+            // header( 'Location: ' . $urlWb ) ;
+            $type = 'success';
+			$message = $core->show_message('success','Congrats! Installation is successful. Please wait redirecting you to the main page in seconds.. .');
+			header( 'Refresh:5; url=../index.php' );
+        }
+    }else{
+        $message = $core->show_message('error','The host, username, password, database name required.');
+    }
 }
-else
-{
-  $fp = fopen('inc/db_connect.php', 'wb');
-  fwrite($fp,$connect_code);
-  fclose($fp);
-  chmod('inc/db_connect.php', 0666);
-}
-
 ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Welcome to Installer</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Umfragen Installer</h1>
+            <hr>
+            <?php 
+            if(is_writable($db_config_path))
+            {
+            ?>
+                <?php if(isset($message)) {
+                    if( isset($type) && $type == 'success' ){
+                        echo '
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        ' . $message . '
+                        </div>';
+                    }else{
+                        echo '
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        ' . $message . '
+                        </div>';
+                    }
+                }
+                ?>
+                
+                <form id="install_form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="form-group">
+                    <label for="hostname">Database Hostname</label>
+                    <input type="text" id="hostname" value="localhost" class="form-control" name="hostname" />
+                    <p class="help-block">Your Hostname.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Database Username</label>
+                    <input type="text" id="username" class="form-control" name="username" />
+                    <p class="help-block">Your Username.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Database Password</label>
+                    <input type="password" id="password" class="form-control" name="password" />
+                    <p class="help-block">Your Password.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="database">Database Name</label>
+                    <input type="text" id="database" class="form-control" name="database" />
+                    <p class="help-block">Your Database Name.</p>
+                </div>
+             
+                <input type="submit" value="Install" class="btn btn-primary btn-block" id="submit" />
+                </form>
+        
+                <?php 
+                } 
+                else {
+                ?>
+                <p class="alert alert-danger">
+                    Die Datei config/config.inc.php muss beschreibbar sein.<br>
+                    <strong>Zum Beispiel</strong>:<br />
+                    <code>chmod 777 config/config.inc.php</code>
+                    </p>
+                <?php 
+                } 
+                ?>
+            </div>
+            
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
