@@ -83,7 +83,8 @@ body {
 .home table thead td {
     padding: 10px;
     font-weight: bold;
-    color: #ffffff;
+    color: #575757;
+    background-color: #333333;
     font-size: 14px;
 }
 .home table tbody tr {
