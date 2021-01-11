@@ -1,5 +1,5 @@
 <?php
-
+include("database.inc.php");
 $filename = '1-database.sql';
 
 // Temporary variable, used to store current query
