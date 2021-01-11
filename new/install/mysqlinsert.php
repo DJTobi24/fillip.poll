@@ -5,7 +5,7 @@ try {
 	 $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
 
-     $sql1 ="CREATE TABLE IF NOT EXISTS umfragen(
+    $sql1 ="CREATE TABLE IF NOT EXISTS umfragen(
      		id int(11) NOT NULL AUTO_INCREMENT,
      		frage text NOT NULL,
      		besch text NOT NULL,
