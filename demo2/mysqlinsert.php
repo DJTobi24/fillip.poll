@@ -1,20 +1,6 @@
 <?php
 
-// Name of the file
-$filename = '1-database.sql';
-// MySQL host
-$mysql_host = 'localhost';
-// MySQL username
-$mysql_username = 'poll2';
-// MySQL password
-$mysql_password = '25152515?';
-// Database name
-$mysql_database = 'poll2';
-
-// Connect to MySQL server
-mysqli_connect($mysql_host, $mysql_username, $mysql_password) or die('Error connecting to MySQL server: ' . mysqli_error());
-// Select database
-mysqli_select_db($mysql_database) or die('Error selecting MySQL database: ' . mysqli_error());
+include("config/database.inc.php"); // <- Datenbank einbinden
 
 // Temporary variable, used to store current query
 $templine = '';
