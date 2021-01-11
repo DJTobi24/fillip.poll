@@ -1,7 +1,7 @@
 <script type="text/javascript">
 	function überprüfung()
 	{
-		if (document.erstellen.frage.value == "") {
+		if (document.formular.frage.value == "") {
 			alert('Das Eingabefeld wurde nicht ausgefüllt');
 			return false;
 		}
