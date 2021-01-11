@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
             $stmt = $pdo->prepare('UPDATE poll_answers SET votes = votes + 1 WHERE id = ?');
             $stmt->execute([$_POST['poll_answer']]);
             // Redirect user to the result page
-            header ('Location: result.php?id=' . $_GET['id']);
+            header ('Location: ergebniss.php?id=' . $_GET['id']);
             exit;
         }
     } else {
