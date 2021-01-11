@@ -1,20 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$active_group = 'default';
-$query_builder = TRUE;
-
 function pdo_connect_mysql() {
     // Hier sind die MySql Lgoindaten abgespeichert
     $DATENBANK_HOST = 'localhost';
     $DATENBANK_BENUTZER = 'poll4';
     $DATENBANK_PASSWORT = '25152515?';
-	$DATENBANK_NAME = 'phppoll';
-	'hostname' => '%HOSTNAME%',
-	'username' => '%USERNAME%',
-	'password' => '%PASSWORD%',
-	'database' => '%DATABASE%',
-
+    $DATENBANK_NAME = 'phppoll';
     try {
     	return new PDO('mysql:host=' . $DATENBANK_HOST . ';dbname=' . $DATENBANK_NAME . ';charset=utf8', $DATENBANK_BENUTZER, $DATENBANK_PASSWORT);
     } catch (PDOException $exception) {
@@ -50,5 +40,4 @@ function template_footer() {
         </body>
     </html>
     EOT;
-	}
-?>
+    }
