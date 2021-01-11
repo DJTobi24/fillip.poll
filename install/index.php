@@ -1,10 +1,27 @@
 <?php
+// PHP Version Prüfen
 $php_version=phpversion();
-if($php_version<5)
+if($php_version<7)
 {
   $error=true;
-  $php_error="PHP version is $php_version - too old!";
+  $php_error="Die PHP Version: $php_version - ist zu alt!";
 }
+
+ if(empty($php_error)) echo "<span style='color:green;'>$php_version - OK!</span>";
+else echo "<span style='color:red;'>$php_error</span>";
+
+// PHP Email Aktiv
+if(!function_exists('mail'))
+{
+  $mail_error="PHP Mail Funktion ist nicht Aktiviert!";
+}
+// PHP Safe Mode 
+if( ini_get("safe_mode") )
+{
+  $error=true;
+  $safe_mode_error="Bitte gehen sie aus dem PHP Safe Mode heraus";
+}
+
 ?>
 
 <?php
@@ -18,7 +35,15 @@ function find_SQL_Version() {
   $mysql_version=find_SQL_Version();
   if($mysql_version<5)
   {
-    if($mysql_version==-1) $mysql_error="MySQL version will be checked at the next step.";
-    else $mysql_error="MySQL version is $mysql_version. Version 5 or newer is required.";
+    if($mysql_version==-1) $mysql_error="Die MySQL Version wird beim Nächsten schritt überprüft.";
+    else $mysql_error="Die Mysql Version: $mysql_version - ist zu Alt. Version 5 oder höher wird benötigt.";
   }
+
+  $_SESSION['umfrage_sessions_work']=1;
+  if(empty($_SESSION['umfrage_sessions_work']))
+  {
+    $error=true;
+    $session_error="Sessions sind deaktiviert!";
+  }
+
   ?>
