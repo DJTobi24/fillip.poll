@@ -3,7 +3,7 @@ include('../config/dbdata.php');
 try {
      $db = new PDO('mysql:host=' . $DATENBANK_HOST . ';dbname=' . $DATENBANK_NAME . ';charset=utf8', $DATENBANK_BENUTZER, $DATENBANK_PASSWORT);
 	 $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
-	 
+
      $sql ="CREATE DATABASE IF NOT EXISTS `phpumfrage` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" ;
 		$db->exec($sql1;
 		print("Erstelle phpumfrage Datenbank, wen sie noch nicht existiert.\n");
@@ -28,7 +28,7 @@ try {
 			`antworten` text NOT NULL,
 			`stimmen` int(11) NOT NULL DEFAULT '0',
 			PRIMARY KEY (`id`)
-			) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;" ;
+			) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;;" ;
 		$db->exec($sql3);
 		print("Erstelle Tabelle: umfrage_antwort.\n");
 
