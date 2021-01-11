@@ -78,11 +78,6 @@ function find_SQL_Version() {
         padding: 14px 16px;
         text-decoration: none;
       }
-
-      li a:hover:not(.active) {
-        background-color: #111;
-      }
-
       .active {
         background-color: #fa9e00;
       }
@@ -92,6 +87,7 @@ function find_SQL_Version() {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
+        color: #ffffff
       }
 
       #voraussetzung td, #voraussetzung th {
