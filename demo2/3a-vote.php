@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Umfrage ERstellen</title>
+    <title>Umfrage Erstellen</title>
     <link rel="stylesheet" href="3b-vote.css"/>
   </head>
   <body>

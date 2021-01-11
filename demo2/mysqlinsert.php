@@ -14,9 +14,9 @@ foreach ($sqlScript as $line)	{
 		
 	$query = $query . $line;
 	if ($endWith == ';') {
-		mysqli_query($conn,$query) or die('<div class="error-response sql-import-response">Problem in executing the SQL query <b>' . $query. '</b></div>');
+		mysqli_query($conn,$query) or die('<div class="error-response sql-import-response">Promlem mit dem Import: <b>' . $query. '</b></div>');
 		$query= '';		
 	}
 }
-echo '<div class="success-response sql-import-response">SQL file imported successfully</div>';
+echo '<div class="success-response sql-import-response">SQL Datei Erfolgreich Importiert</div>';
 ?>
