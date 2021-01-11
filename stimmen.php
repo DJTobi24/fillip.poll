@@ -1,6 +1,6 @@
 <?php
 include 'function.php';
-// Connect to MySQL
+// Mit dem Mysql Server Verbinden
 $pdo = pdo_connect_mysql();
 // If the GET request "id" exists (poll id)...
 if (isset($_GET['id'])) {

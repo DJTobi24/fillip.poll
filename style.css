@@ -6,11 +6,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 body {
-    background-color: #FFFFFF;
+    background-color: #000000;
     margin: 0;
 }
 .navtop {
-    background-color: #3f69a8;
+    background-color: #b46c00;
     height: 60px;
     width: 100%;
     border: 0;
@@ -54,7 +54,7 @@ body {
     padding: 25px 0;
     font-size: 22px;
     border-bottom: 1px solid #ebebeb;
-    color: #666666;
+    color: #ffffff;
 }
 .home .create-poll {
     display: inline-block;
@@ -68,7 +68,7 @@ body {
     margin: 15px 0;
 }
 .home .create-poll:hover {
-    background-color: #32a367;
+    background-color: #ff9100;
 }
 .home table {
     width: 100%;
