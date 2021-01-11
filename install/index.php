@@ -102,7 +102,9 @@ function find_SQL_Version() {
       #voraussetzung tr:nth-child(even){background-color: #f2f2f2;}
 
       #voraussetzung tr:hover {background-color: #ddd;}
-
+      td{
+        background-color: #242424;
+      }
       #voraussetzung th {
         padding-top: 12px;
         padding-bottom: 12px;
