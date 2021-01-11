@@ -1,7 +1,7 @@
 <?php
 // examplepage.php
 include 'function.php';
-$pdo = pdo_connect_mysqli();
+$pdo = pdo_connect_mysql();
 ?>
 
 <?=template_header('Example Page')?>
