@@ -5,6 +5,9 @@ $msg = '';
 
 // Check if POST data is not empty
 if (!empty($_POST)) {
+    if( empty($_POST['frage']) OR empty($_POST['beschr']) OR empty($_POST['answers']) ) {
+        echo "Nicht alle Felder ausgefüllt!";
+   }
     // Post data not empty insert a new record
     // Check if POST variable "frage" exists, if not default the value to blank, basically the same for all variables
     $frage = isset($_POST['frage']) ? $_POST['frage'] : '';
