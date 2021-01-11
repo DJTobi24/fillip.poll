@@ -56,6 +56,9 @@ function find_SQL_Version() {
 <html>
   <head>
     <style>
+      body {
+        background-color: #000000;
+      }
       ul {
         list-style-type: none;
         margin: 0;
