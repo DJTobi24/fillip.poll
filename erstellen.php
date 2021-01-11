@@ -9,19 +9,19 @@ if (!empty($_POST)) {
 
     // Post data not empty insert a new record
     // Check if POST variable "frage" exists, if not default the value to blank, basically the same for all variables
-    $frage = isset($_POST['frage']) ? $_POST['frage'] : '';
-    $beschr = isset($_POST['beschr']) ? $_POST['beschr'] : '';
+    $frage = isset($_POST['frage']) ? $_POST['frage'] : 'Keine Frage';
+    $beschr = isset($_POST['beschr']) ? $_POST['beschr'] : 'Keine Beschreibung';
     // Insert new record into the "polls" table
     $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?)');
     $stmt->execute([$frage, $beschr]);
     // Below will get the last insert ID, this will be the poll id
     $poll_id = $pdo->lastInsertId();
-    // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
-    $answers = isset($_POST['answers']) ? explode(PHP_EOL, $_POST['answers']) : '';
-    foreach ($answers as $answer) {
+    // Get the antwort and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
+    $antwort = isset($_POST['antwort']) ? explode(PHP_EOL, $_POST['antwort']) : 'Keine Antworten';
+    foreach ($antwort as $answer) {
         // If the answer is empty there is no need to insert
         if (empty($answer)) continue;
-        // Add answer to the "poll_answers" table
+        // Add answer to the "poll_antwort" table
         $stmt = $pdo->prepare('INSERT INTO poll_answers VALUES (NULL, ?, ?, 0)');
         $stmt->execute([$poll_id, $answer]);
     }
@@ -32,25 +32,16 @@ if (!empty($_POST)) {
 
 <?=template_header('Umfrage Erstellen')?>
 
-<script type="text/javascript">
-	function überprüfung()
-	{
-		if (document.formular.frage.value == "") {
-			alert('Das Eingabefeld wurde nicht ausgefüllt');
-			return false;
-		}
-	}
-</script>
 
 <div class="content update">
 	<h2>Umfrage Erstellen</h2>
-    <form action="erstellen.php" method="post" onSubmit="return überprüfung()">
+    <form action="erstellen.php" method="post" >
         <label for="frage">Frage</label>
         <input type="text" name="frage" id="frage">
         <label for="beschr">Beschreibung</label>
         <input type="text" name="beschr" id="beschr">
-        <label for="answers">Antworten (pro Zeile 1)</label>
-        <textarea name="answers" id="answers"></textarea>
+        <label for="antwort">Antworten (pro Zeile 1)</label>
+        <textarea name="antwort" id="antwort"></textarea>
         <input type="submit" value="Create">
     </form>
     <?php if ($msg): ?>
