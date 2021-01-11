@@ -1,11 +1,11 @@
 <?php 
-include('header.php');
+include('config/header.php');
 ?>
 <title>phpzag.com : Demo Poll and Voting System with PHP, MySQL & jQuery</title>
 <style>
 
 </style>
-<?php include('container.php');?>
+<?php include('config/container.php');?>
 <div class="container">
 	<h2>Poll and Voting System with PHP, MySQL & jQuery</h2>	
 	<?php
@@ -28,6 +28,6 @@ include('header.php');
 		}
 	} 
 	?>	
-	<a class="btn btn-default read-more" href="http://www.phpzag.com/demo/poll-and-voting-system-with-php-and-mysql/">Back to Poll</a>	
+	<a class="btn btn-default read-more" href="index.php">Back to Poll</a>	
 </div>
-<?php include('footer.php');?>
+<?php include('config/footer.php');?>
