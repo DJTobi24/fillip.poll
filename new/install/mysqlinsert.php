@@ -3,7 +3,7 @@
 include("db_connect.php");
 
 $query = '';
-$sqlScript = file('database.sql');
+$sqlScript = file('databae.sql');
 foreach ($sqlScript as $line)	{
 	
 	$startWith = substr(trim($line), 0 ,2);
