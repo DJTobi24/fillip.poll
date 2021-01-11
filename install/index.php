@@ -52,12 +52,12 @@ function find_SQL_Version() {
 
   ?>
 <?php
-if(empty($php_error)) echo "<span style='color:green;'>$php_version - OK!</span>";
+if(empty($php_error)) echo "<span style='color:green;'>$php_version - OK!</span><br>";
 else echo "<span style='color:red;'>$php_error</span><br>";
 
 if(empty($mail_error)) echo "<span style='color:green;'> OK!</span><br>";
-else echo "<span style='color:red;'>$mail_error</span>";
+else echo "<span style='color:red;'>$mail_error</span><br>";
 
 if(empty($safe_mode_error)) echo "<span style='color:green;'> - OK!</span><br>";
-else echo "<span style='color:red;'>$php_error</span>";
+else echo "<span style='color:red;'>$php_error</span><br>";
 ?>
