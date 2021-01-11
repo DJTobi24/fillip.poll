@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['sent'])){
-include("database.inc.php");
+include("db_connect.php");
 
 $query = '';
 $sqlScript = file('database.sql');
