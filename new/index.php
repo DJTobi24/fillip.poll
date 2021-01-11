@@ -3,7 +3,7 @@ include 'config/config.inc.php';
 // Mit dem Mysql Server Verbinden
 $pdo = pdo_connect_mysql();
 // MySQL query that selects all the polls and poll answers
-$stmt = $pdo->query('SELECT p.*, GROUP_CONCAT(pa.title ORDER BY pa.id) AS answers FROM polls p LEFT JOIN poll_answers pa ON pa.poll_id = p.id GROUP BY p.id');
+$stmt = $pdo->query('SELECT p.*, GROUP_CONCAT(pa.title ORDER BY pa.id) AS antworten FROM umfragen p LEFT JOIN umfrage_antwort pa ON pa.poll_id = p.id GROUP BY p.id');
 $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -28,7 +28,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <td><?=$poll['id']?></td>
                 <td><?=$poll['title']?></td>
-				<td><?=$poll['answers']?></td>
+				<td><?=$poll['antworten']?></td>
                 <td class="actions">
 					<a href="stimmen.php?id=<?=$poll['id']?>" class="view" title="Umfrage Anzeigen"><i class="fas fa-eye fa-xs"></i></a>
                     <a href="loeschen.php?id=<?=$poll['id']?>" class="trash" title="Umfrage Löschen"><i class="fas fa-trash fa-xs"></i></a>
